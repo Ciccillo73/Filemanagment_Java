@@ -14,8 +14,10 @@ public class Folder {
     @Column
     private String title;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
 
     public Folder(String title, User user) {
         this.title = title;

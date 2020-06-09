@@ -21,6 +21,9 @@ public class File {
     @Column
     private long size;
 
+    @ManyToOne
+    @JoinColumn(name = "folder_id", nullable = false)
+
     private Folder folder;
 
     public File(String name, String extension, long size, Folder folder) {

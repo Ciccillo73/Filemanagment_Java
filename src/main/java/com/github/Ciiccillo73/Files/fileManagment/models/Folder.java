@@ -1,6 +1,10 @@
 package com.github.Ciiccillo73.Files.fileManagment.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "folders")
@@ -18,10 +22,16 @@ public class Folder {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonIgnoreProperties("folder")
+    @OneToMany(mappedBy = "folder")
+
+    private List<File> files;
+
 
     public Folder(String title, User user) {
         this.title = title;
         this.user = user;
+        this.files = new ArrayList<File>();
     }
 
     public Folder(){
